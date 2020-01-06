@@ -27,4 +27,21 @@ class MoviesController extends AbstractController
             'movies' => $movies,
         ]);
     }
+
+    /**
+     * @Route("/movie/{id}", name="movie")
+     */
+
+    public function currentMovie($id)
+    {   
+        $movie = $this->getDoctrine()
+            -> getRepository(Movies::class)
+            -> find($id);
+
+            dump($id);
+
+        return $this->render('movie/index.html.twig', [
+            'movie' => $movie,
+        ]);
+    }
 }

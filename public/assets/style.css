@@ -1,0 +1,20 @@
+.movieName {
+    font-size: 18px;
+}
+
+.movieDescription {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.video {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.app {
+    margin-top: 270px;
+}

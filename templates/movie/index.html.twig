@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}aa
+a
+{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('assets/movieCards.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+
+
+<section class="content">
+    <main class="card">
+        <div class="billboard-layer"></div>
+        <div class="hero" style="background-image: url('{{ movie.cover }}');"></div>
+        <div class="breaking-bad">
+        <h1 class="title">{{ movie.name }}</h1>
+        <ul class="meta">
+            <li class="year">{{ movie.date|date('Y')}}</li>
+            <li class="rating">{{ movie.reviews }} <i class="fas fa-star"></i></li>
+            <li class="language">
+                {% if movie.country %}
+                    Origine : {{ movie.country }}
+                {% else %}
+                    Origine : Non-référencé
+                {% endif %}
+            </li>
+        </ul>
+        <p class="description">{{ movie.description }}
+        </p>
+        <hr class="break" />
+        <div class="bottom-info">
+            <a class="btn btn-min-w btn-web btn-s" href="/" role="button">Retour</a>
+            <a class="btn btn-min-w btn-grey" href="{{ movie.link }}" role="button"> Voir sur AlloCiné</a>
+        </div>
+        </div>
+    </main>
+</section>
+    
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
