@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}aaa
+{% endblock %}
+
+{% block body %}
+
+    <style>
+        body {
+            background-color: #000;
+        }
+        .movieName {
+            font-size: 18px;
+        }
+        .movieDescription{
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+        .video {
+            position:absolute;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        
+    </style>
+
+    <div class="video">
+        <video id="dfp-skin__fullvideo--fullscreen" class="dfp-skin__fullvideo--fullscreen" name="media" autoplay="autoplay" allow="autoplay" muted="muted" loop="">
+            <source id="dfp-skin__fullvideo--fullscreen--src" type="video/mp4" src="https://mediaathay.org.uk/7/13/24/97/@/UNDERWATER_bg-ac-hp_decoupe_v2.mp4">
+        </video>
+    </div>
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="jumbotron">
+                    <h1 class="display-3">Jumbo heading</h1>
+                    <p class="lead">Jumbo helper text</p>
+                    <hr class="my-2">
+                    <p>More info</p>
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            {% for movie in movies %}
+                <div class="col-4">
+                    <div class="card mt-5">
+                        <h3 class="movieName card-header text-center">{{movie.name}}</h3>
+                        
+                        
+                            <img alt="Couverture : {{movie.name}}" src="{{movie.cover}}" style="height: 450px; width: 100%; display: block;">
+                        <div class="card-body">
+                            <p class="card-text movieDescription">{{movie.description}}</p>
+                            <a href="#">Lire la suite</a>
+                        </div>
+                            <ul class="list-group list-group-flush">
+                            
+                                <li class="list-group-item">Catégorie : 
+                                    {% for category in movie.category %}
+                                        {{ category.name }},
+                                    {% endfor %}</li>
+                            
+                            <li class="list-group-item">Auteur : {{ movie.author.name }}</li>
+                            <li class="list-group-item">Produit le : {{ movie.date|date('d/m/Y') }}</li>
+                            {% if movie.country %}
+                            
+                            <li class="list-group-item">Production : {{ movie.country }}</li>
+                            {% else %}
+                            <li class="list-group-item">Production : non-reférencé</li>
+                            {% endif %}
+                            </ul>
+                        <div class="card-body text-center">
+                            <a class="card-link btn btn-success" href="{{ movie.link }}">Voir sur Allociné</a>
+                            <a class="card-link btn btn-primary" href="#">Fiche complète</a>
+                        </div>
+                        <div class="card-footer text-center">
+                            <span class="badge badge-pill badge-primary">
+                                NOTE ALLOCINE :
+                                {{ movie.reviews }} 
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div>
+                    <ul class="pagination pagination-lg">
+                        <li class="page-item disabled">
+                        <a class="page-link" href="#">&laquo;</a>
+                        </li>
+                        <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">5</a>
+                        </li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}
