@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}aa
-a
+{% block title %}
+| {{ author.name }}
 {% endblock %}
 {% block stylesheets %}
     <link href="{{ asset('assets/movieCards.css') }}" type="text/css" rel="stylesheet" />
@@ -27,12 +27,25 @@ a
     transition: 0.5s;
     cursor: pointer;
 }
+
 </style>
 
     <div class="authorMovies">
         {% for movie in author.movies %}
-            <a href="/movie/{{ movie.id }}"><img class="test" src="{{ movie.cover }}" class="" alt="..."></a>
+            <a href="{{ path('movie', { id: movie.id }) }}">
+                <img 
+                    class="movieTitle test" 
+                    src="{{ movie.cover }}"
+                    alt="..."
+                    data-trigger="hover" 
+                    data-container="body"
+                    data-placement="top"
+                    data-content="{{ movie.name }}"
+                >
+            </a>
         {% endfor %}
+
+        
     </div>
 
 <section class="content">
@@ -65,5 +78,7 @@ a
 {% endblock %}
 
 {% block javascripts %}
-
+<script>
+    $('.movieTitle').popover()
+</script>
 {% endblock %}

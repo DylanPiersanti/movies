@@ -2,10 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+
         <title>
-            {% block title %}
-                Home page
-            {% endblock %}
+            My AlloCine
+            {% block title %}{% endblock %}
         </title>
         <link rel="stylesheet" href="assets/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
@@ -30,8 +31,13 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/authors">Les réalisateurs</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">un lien</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Catégories
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {{ render('categories') }}
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">un lien</a>

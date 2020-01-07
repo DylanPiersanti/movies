@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}aa
-a
+{% block title %}
+| {{ movie.name }}
 {% endblock %}
 {% block stylesheets %}
     <link href="{{ asset('assets/movieCards.css') }}" type="text/css" rel="stylesheet" />
@@ -27,7 +27,7 @@ a
                 {% endif %}
             </li>
             <li class="author">
-                <a href="/author/{{ movie.author.id }}" class="authorLink">
+                <a href="{{ path('author', { id: movie.author.id }) }}" class="authorLink">
                     Réalisateur : {{ movie.author.name}}
                 </a>
             </li>
