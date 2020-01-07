@@ -241,3 +241,8 @@ body {
 .btn-s {
     margin-right: 5px;
 }
+
+.authorLink {
+    color: #fff;
+    text-decoration: underline
+}

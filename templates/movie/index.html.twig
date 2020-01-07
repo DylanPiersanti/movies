@@ -26,6 +26,11 @@ a
                     Origine : Non-référencé
                 {% endif %}
             </li>
+            <li class="author">
+                <a href="/author/{{ movie.author.id }}" class="authorLink">
+                    Réalisateur : {{ movie.author.name}}
+                </a>
+            </li>
         </ul>
         <p class="description">{{ movie.description }}
         </p>

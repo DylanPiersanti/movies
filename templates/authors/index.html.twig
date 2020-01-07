@@ -13,10 +13,8 @@
     </style>
 
     <div class="video">
-        <a href="http://www.allocine.fr/video/player_gen_cmedia=19585270&cfilm=254155.html#wads_no_position=preroll">
-            <video id="dfp-skin__fullvideo--fullscreen" class="dfp-skin__fullvideo--fullscreen" name="media" autoplay="autoplay" allow="autoplay" muted="muted" width="1800px" loop="">
-                <source id="dfp-skin__fullvideo--fullscreen--src" type="video/mp4" src="https://mediaathay.org.uk/7/13/24/97/@/UNDERWATER_bg-ac-hp_decoupe_v2.mp4">
-            </video>
+        <a href="https://awards.allocine.fr/">
+            <img src="https://tpc.googlesyndication.com/pagead/imgad?id=CICAgKCnhfWbDhABGAEyCAGHxnuw94oB" width="1700px"/>
         </a>
     </div>
 
@@ -52,43 +50,25 @@
             </div>
         </div>
         <div class="row mb-5">
-            {% for movie in movies %}
+            {% for author in authors %}
                 <div class="col-4">
                     <div class="card mt-5">
-                        <h3 class="movieName card-header text-center">{{movie.name}}</h3>
+                        <h3 class="movieName card-header text-center">{{author.name}}</h3>
                         
                         
-                            <img alt="Couverture : {{movie.name}}" src="{{movie.cover}}" style="height: 450px; width: 100%; display: block;">
-                        <div class="card-body">
-                            <p class="card-text movieDescription">{{movie.description}}</p>
-                            <a href="movie/{{movie.id}}">Lire la suite</a>
-                        </div>
+                            <img alt="Couverture : {{author.name}}" src="{{author.photo}}" style="height: 450px; width: 100%; display: block;">
                             <ul class="list-group list-group-flush">
                             
-                                <li class="list-group-item">Catégorie : 
-                                    {% for category in movie.category %}
-                                        {{ category.name }},
-                                    {% endfor %}</li>
-                            
-                            <li class="list-group-item">Réalisateur : <a href="author/{{ movie.author.id }}">{{ movie.author.name }}</a></li>
-                            <li class="list-group-item">Produit le : {{ movie.date|date('d/m/Y') }}</li>
-                            {% if movie.country %}
-                            
-                            <li class="list-group-item">Production : {{ movie.country }}</li>
+                            <li class="list-group-item">Né(e) le : {{ author.birthday|date('d/m/Y') }}</li>
+                            {% if author.nationality %}
+                                <li class="list-group-item">Nationalité : {{ author.nationality }}</li>
                             {% else %}
-                            <li class="list-group-item">Production : non-reférencé</li>
+                                <li class="list-group-item">Nationalité : non-reférencé</li>
                             {% endif %}
                             </ul>
                         <div class="card-body text-center">
-                            <a class="card-link btn btn-success" href="{{ movie.link }}">Voir sur Allociné</a>
-                            <a class="card-link btn btn-primary" href="movie/{{ movie.id }}">Fiche complète</a>
-                        </div>
-                        <div class="card-footer text-center">
-                            <span class="badge badge-pill badge-primary">
-                                NOTE ALLOCINE :
-                                {{ movie.reviews }} 
-                                <i class="fas fa-star"></i>
-                            </span>
+                            <a class="card-link btn btn-success" href="{{ author.link }}">Voir sur Allociné</a>
+                            <a class="card-link btn btn-primary" href="author/{{ author.id }}">Fiche complète</a>
                         </div>
                     </div>
                 </div>

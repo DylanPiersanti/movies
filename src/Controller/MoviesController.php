@@ -16,11 +16,11 @@ class MoviesController extends AbstractController
      */
     public function index()
     {
+
         $movies = $this->getDoctrine()
             ->getRepository(Movies::class)
             ->findBy([], ['name'=>'ASC'], 18, 0);
 
-        dump($movies[0]->getCategory());
 
         return $this->render('movies/index.html.twig', [
             'controller_name' => 'MoviesController',
@@ -37,8 +37,6 @@ class MoviesController extends AbstractController
         $movie = $this->getDoctrine()
             -> getRepository(Movies::class)
             -> find($id);
-
-            dump($id);
 
         return $this->render('movie/index.html.twig', [
             'movie' => $movie,

@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}aa
+a
+{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('assets/movieCards.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+
+<style>
+.authorMovies {
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    height: 150px;
+    z-index: 1000;
+    background-size: cover;
+}
+.test {
+    transition: 0.5s;
+}
+
+.test:hover{
+    margin-top: -100px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+</style>
+
+    <div class="authorMovies">
+        {% for movie in author.movies %}
+            <a href="/movie/{{ movie.id }}"><img class="test" src="{{ movie.cover }}" class="" alt="..."></a>
+        {% endfor %}
+    </div>
+
+<section class="content">
+    <main class="card">
+        <div class="billboard-layer"></div>
+        <div class="hero" style="background-image: url('{{ author.photo }}');"></div>
+        <div class="breaking-bad">
+        <h1 class="title">{{ author.name }}</h1>
+        <ul class="meta">
+            <li class="year">{{ author.birthday|date('Y')}}</li>
+            <li class="language">
+                {% if author.nationality %}
+                    Origine : {{ author.nationality }}
+                {% else %}
+                    Origine : Non-référencé
+                {% endif %}
+            </li>
+        </ul>
+        <p class="description">{{ author.biography }}
+        </p>
+        <hr class="break" />
+        <div class="bottom-info">
+            <a class="btn btn-min-w btn-web btn-s" href="/authors" role="button">Retour</a>
+            <a class="btn btn-min-w btn-grey" href="{{ author.link }}" role="button"> Voir sur AlloCiné</a>
+        </div>
+        </div>
+    </main>
+</section>
+    
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
