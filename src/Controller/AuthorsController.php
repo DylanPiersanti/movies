@@ -4,26 +4,33 @@ namespace App\Controller;
 
 use App\Entity\Authors;
 
-
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Knp\Component\Pager\PaginatorInterface;
 
 class AuthorsController extends AbstractController
 {
     /**
      * @Route("/authors", name="authors")
      */
-    public function index()
+    public function index(Request $request, PaginatorInterface $paginator)
     {
 
         $authors = $this->getDoctrine()
             ->getRepository(Authors::class)
-            ->findBy([], ['name'=>'ASC'], 18, 0);
+            ->findBy([], ['name'=>'ASC']);
+
+        $authorsList = $paginator->paginate(
+            $authors,
+            $request->query->getInt('page', 1),
+            6
+        );
 
         return $this->render('authors/index.html.twig', [
             'controller_name' => 'AuthorsController',
-            'authors' => $authors
+            'authors' => $authors,
+            'authorsList' => $authorsList
         ]);
     }
 
