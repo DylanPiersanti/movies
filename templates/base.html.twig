@@ -14,41 +14,77 @@
         {% block stylesheets %}
         
         {% endblock %}
+        <style>
+            .navbar {
+                background-color: #fecc00 !important;
+                height: 120px;
+            }
+            .nav-link {
+                color: #000 !important;
+            }
+            .roll {
+                background-color: #fff;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .littleText {
+                position: absolute;
+                top: 50px;
+                font-size: 10px;
+            }
+            .search {
+                position: absolute;
+                right: 350px;
+            }
+        </style>
         </head>
         <body>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <a class="navbar-brand" href="#">My AlloCine</a>
-                    <button aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarColor02" data-toggle="collapse" type="button">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <div class="container">
+                        <a class="navbar-brand" href="#">
+                            <img src="/assets/logo.svg" width="150"/>
+                        </a>
+                        <button aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarColor02" data-toggle="collapse" type="button">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                    <div class="collapse navbar-collapse" id="navbarColor02">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/">Les films
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/authors">Les réalisateurs</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Catégories
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {{ render('categories') }}
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">un lien</a>
-                            </li>
-                        </ul>
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" placeholder="Search" type="text">
-                            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                        </form>
+                        <div class="collapse navbar-collapse" id="navbarColor02">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/">Les films
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/authors">Les réalisateurs</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Catégories
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        {{ render('categories') }}
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">un lien</a>
+                                </li>
+                            </ul>
+                            <form class="search form-inline my-auto my-lg-0" method="get" action="{{ path('movies') }}">
+                                <input name="search" class="form-control mr-sm-2" placeholder="Rechercher un film" type="search">
+                                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Rechercher</button>
+                                <p class="littleText">Ex. : Bohemian Rhapsody, Mowgli, Avatar, Star W...</p>
+                            </form>
+                            
+                        </div>
                     </div>
             </nav>
+            <div class="roll">
+                <div class="rollText">
+                    Découvrez notre recherche de séances cinéma, les news et dossiers cinéma et séries TV, les émissions AlloCiné, les dernières bandes-annonces et plus encore...
+                </div>
+            </div>
 
             {% block body %}{% endblock %}
 

@@ -61,9 +61,9 @@ class Movies
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Categories", inversedBy="movies")
      * @ORM\JoinTable(
-     * name="movies_has_categories",
-     * joinColumns={@ORM\JoinColumn(name="movie_id", referencedColumnName="id")},
-     * inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
+     *      name="movies_has_categories",
+     *      joinColumns={@ORM\JoinColumn(name="movie_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
      *)
      */
     private $category;
